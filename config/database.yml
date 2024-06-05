@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: wanderlust_waves_production
+  username: wanderlust_waves
+  password: <%= ENV["Wanderlust_Waves_DATABASE_PASSWORD"] %>
