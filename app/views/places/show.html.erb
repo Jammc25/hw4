@@ -7,34 +7,22 @@
             </p>
 </div>
               
-
 <div class="container text-center">
-  <% @entries.each_slice(3) do |entry_slice| %> <!-- Group entries in slices of 3 -->
+  <% for entries in @entries.each_slice(3) %>
     <div class="row mb-4">
-      <% entry_slice.each do |entry| %> <!-- Iterate over each group of 3 entries -->
+      <% for entry in entries %>
         <div class="col-md-4">
-          <h4><%= entry["title"] %></h4>
-          <h5><%= entry["occurred_on"] %></h5>
-                      <% if entry.uploaded_image.attached? %>
-              <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid">
-            <% else %>
-              <img src="<%= entry["image"] %>" class="img-fluid">
-            <% end %>
-            <p><%= entry["description"] %></p>
+          <h3><%= entry["title"] %></h3>
+          <h4><%= entry["occurred_on"] %></h4>
+          <% if entry.uploaded_image.attached? %>
+            <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid">
+          <% else %>
+            <img src="<%= entry["image"] %>" class="img-fluid">
+          <% end %>
+          <p><%= entry["description"] %></p>
         </div>
       <% end %>
     </div>
   <% end %>
 </div>
-
-<% for entry in @entries %>
-<div class="container text-center">
-  <div class="row">
-    <div class="col">
-      
-  <h3><%= entry["title"] %></h3>
-  <h4><%= entry["occurred_on"] %></h4>
-  <p><%= entry["description"] %></p>
-<% end %>
-    </div>
 
