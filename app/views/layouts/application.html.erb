@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="/">Wanderlust Waves</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,11 +38,12 @@
           <% @current_user = User.find_by({ "id" => session["user_id"] }) %>
           <% if @current_user == nil %>
             <li class="nav-item">
+              <a href="/login" class="nav-link">Login</a>
+            </li> |
+            <li class="nav-item">
               <a href="/users/new" class="nav-link">Sign Up</a>
             </li>
-            <li class="nav-item">
-              <a href="/login" class="nav-link">Login</a>
-            </li>
+            
           <% else %>
             <li class="navbar-text">
               Logged in as: <%= @current_user["username"] %>
@@ -50,9 +51,6 @@
             </li>
             <li class="nav-item">
               <a href="/logout" class="nav-link">Logout</a>
-            </li>
-            <li class="nav-item">
-              <a href="/posts/new/" class="btn btn-success">New Post</a>
             </li>
           <% end %>
         </div>
