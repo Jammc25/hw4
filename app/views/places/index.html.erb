@@ -1,11 +1,11 @@
   
   <h1>Places</h1>
-
+<% if @current_user %>
 <p class="nav-item">
               <a href="/places/new/" class="btn btn-success">New Place</a>
             </p>
 
-<% if @current_user %>
+
 <p>
   <% for place in @places %>
     <p><a href="/places/<%= place["id"] %>" style="color: green;"><%= place["name"] %></a></p>
